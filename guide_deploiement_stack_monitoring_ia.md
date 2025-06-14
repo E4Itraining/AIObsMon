@@ -1,6 +1,6 @@
-# 🛠️ Guide de Déploiement : Stack Monitoring & Observabilité IA
+#  Guide de Déploiement : Stack Monitoring & Observabilité IA
 
-## 📦 Contenu de la stack
+##  Contenu de la stack
 
 Cette stack open source permet de superviser et observer les métriques, logs et traces d'un modèle IA en production.
 
@@ -11,15 +11,15 @@ Cette stack open source permet de superviser et observer les métriques, logs et
 - **OpenTelemetry Collector** – collecte et envoi de métriques
 - *(+ fichiers de configuration adaptés)*
 
-## ✅ Prérequis
+##  Prérequis
 
 - Docker & Docker Compose installés
 - Ports disponibles : `3000`, `9090`, `3100`, `8889`
 - Dossier local contenant les fichiers de configuration (`ai_monitoring_stack.zip` décompressé)
 
-## 🚀 Étapes de déploiement
+##  Étapes de déploiement
 
-### 1. 📁 Cloner ou extraire le répertoire
+### 1.  Cloner ou extraire le répertoire
 
 ```bash
 unzip ai_monitoring_stack.zip
@@ -38,7 +38,7 @@ Arborescence attendue :
     └── otel-collector-config.yaml
 ```
 
-### 2. 🧱 Lancer la stack
+### 2.  Lancer la stack
 
 ```bash
 docker-compose up -d
@@ -49,14 +49,14 @@ Cela démarre les 4 services :
 - `prometheus` sur [http://localhost:9090](http://localhost:9090)
 - `loki` sur [http://localhost:3100](http://localhost:3100)
 
-### 3. 🔐 Connexion à Grafana
+### 3.  Connexion à Grafana
 
 - Accéder à [http://localhost:3000](http://localhost:3000)
 - Identifiants :
   - **Utilisateur** : `admin`
   - **Mot de passe** : `admin`
 
-⚠️ Changez le mot de passe à la première connexion.
+Changez le mot de passe à la première connexion.
 
 ### 4. ➕ Ajouter les sources de données dans Grafana
 
@@ -64,14 +64,14 @@ Dans l’interface Grafana :
 - Ajouter une source Prometheus : `http://prometheus:9090`
 - Ajouter une source Loki : `http://loki:3100`
 
-### 5. 📊 Créer vos premiers dashboards
+### 5.  Créer vos premiers dashboards
 
 - Utilisez les labels exposés par OpenTelemetry ou ajoutez des dashboards standards pour visualiser :
   - Latence, erreurs, appels IA
   - Logs applicatifs, dérives, exceptions
   - Charge CPU/RAM du modèle IA
 
-### 6. ⚙️ Exposer vos modèles IA au monitoring
+### 6.  Exposer vos modèles IA au monitoring
 
 Ajoutez à votre code Python :
 
@@ -87,13 +87,13 @@ inference_counter.inc()
 
 Puis ajoutez ce port comme target dans `prometheus.yml`.
 
-## 🔒 Bonus sécurité
+##  Bonus sécurité
 
 - Activez HTTPS sur Grafana avec un reverse proxy (NGINX, Traefik)
 - Restreignez l’accès par IP ou via authentification OIDC
 - Connectez à un système de logs centralisé si besoin (SIEM, ELK)
 
-## 📚 Ressources complémentaires
+##  Ressources complémentaires
 
 - [Grafana Loki Documentation](https://grafana.com/docs/loki/)
 - [OpenTelemetry Collector](https://opentelemetry.io/docs/collector/)
